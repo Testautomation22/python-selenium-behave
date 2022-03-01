@@ -12,20 +12,21 @@ class Page:
         self.driver.get(url)
 
     # Click method
-    def click(self, *locator):
-        self.driver.find_element(*locator).click()
+    def click_element(self, *locator):
+        self.driver.wait.until(EC.presence_of_element_located(locator)).click()
 
     # Hover method
     def hover(self, *locator):
         a = ActionChains(self.driver)
-        m = self.driver.find_element(*locator)
-        a.move_to_element(m).perform()
+        m = self.driver.wait.until(EC.presence_of_element_located(locator))
+        a.move_to_element(m)
+        a.perform()
 
     # Assertion
     def verify_text(self, expected_text, *locator):
-        actual_text = self.driver.wait.until(EC.visibility_of_element_located(locator)).text
+        actual_text = self.driver.wait.until(EC.presence_of_element_located(locator)).text
         assert actual_text == expected_text, f'Error! Expected {expected_text} but got {actual_text}'
 
-    def capture_screenshot(self, *locator):
-        sc = self.driver.find_element(*locator)
-        sc.screenshot("./screenshots.png")
+
+
+

@@ -3,10 +3,12 @@ from selenium.webdriver.common.by import By
 
 
 class VerifyResults(Page):
+    #Locators
     CART_PRICE_CSS_SELECTOR = (By.CSS_SELECTOR, '.cart-price')
     CART_SUBTOTAL_XPATH = (By.XPATH, "//*[@class='cart-subtotal']")
     CHECK_OUT_PAGE_LINK_TEXT = (By.LINK_TEXT, 'CHECKOUT DETAILS')
     EMPTY_CART_XPATH = (By.XPATH, "//p[contains(text(), 'Your cart is currently empty.')]")
+    IPHONE_SE_XPATH = (By.XPATH, "//h1[contains(text(), 'iPhone SE')]")
     ITEMS_AMOUNT_CSS_SELECTOR = (By.CSS_SELECTOR, '.cart-icon strong')
     HOVER_EMPTY_CART_XPATH = (By.XPATH, "//p[contains(text(), 'No products in the cart.')]")
     SHOPPING_CART_PAGE_LINK_TEXT = (By.LINK_TEXT, 'SHOPPING CART')
@@ -35,3 +37,6 @@ class VerifyResults(Page):
 
     def verify_checkout_page(self, expected_text):
         self.verify_text(expected_text, *self.CHECK_OUT_PAGE_LINK_TEXT)
+
+    def verify_prod_results(self, expected_text, ):
+        self.verify_text(expected_text, *self.IPHONE_SE_XPATH)

@@ -2,7 +2,6 @@ from pages.top_nav_menu import TopNav
 from pages.home_page import HomePage
 from pages.results import VerifyResults
 from pages.products_page import ProductsPage
-from pages.products_results_page import ProdResults
 
 
 class Application:
@@ -24,6 +23,6 @@ class Application:
         self.quick_view = ProductsPage(self.driver)
         self.click_close = ProductsPage(self.driver)
         self.hover_iphone = ProductsPage(self.driver)
-        self.verify_prod_results = ProdResults(self.driver)
+        self.verify_prod= VerifyResults(self.driver)
         self.arrows = ProductsPage(self.driver)
         self.dots = ProductsPage(self.driver)

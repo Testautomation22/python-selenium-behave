@@ -1,8 +1,5 @@
 from behave import given, then, when
 import time
-from selenium.webdriver.common.by import By
-
-
 
 
 @given(u'Launch Gettop app')
@@ -14,6 +11,7 @@ def step_impl(context):
 @when(u'Hover on product')
 def step_impl(context):
     context.app.hover_iphone.hover_iphone_se()
+    time.sleep(4)
 
 
 @when(u'Click "QUICK VIEW"')
@@ -23,7 +21,8 @@ def step_impl(context):
 
 @when(u'"QUICK VIEW" opens')
 def step_impl(context):
-    context.app.verify_prod_results.verify_prod('iPhone SE')
+    time.sleep(4)
+    context.app.verify_prod.verify_prod_results('iPhone SE')
 
 
 @then(u'Click X to close')
@@ -43,6 +42,6 @@ def step_impl(context):
 
 @then(u'Click > and <')
 def step_impl(context):
-    time.sleep(4)
     context.app.arrows.click_arrows()
+
 
